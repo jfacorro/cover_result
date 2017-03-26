@@ -17,6 +17,7 @@ init(State) ->
             {deps, ?DEPS},                % The list of dependencies
             {example, "rebar3 cover_result"}, % How to use the plugin
             {opts, []},                   % list of options understood by the plugin
+            {profiles, [test]},
             {short_desc, "Display cover result in the command-line"},
             {desc, "Display cover result in the command-line"}
     ]),
@@ -36,7 +37,7 @@ format_error(Reason) ->
 %% ===================================================================
 
 report(State) ->
-    CoverDir = cover_dir(State),
+    CoverDir   = cover_dir(State),
     CoverFiles = get_all_coverdata(CoverDir),
     cover:import(CoverFiles),
 
